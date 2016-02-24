@@ -9,49 +9,23 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
     <body>
-        <div> <font class="position" color="green"> #{beanMensaje.msj}</font></div><br/><br/>
-        <div >
-            <div>
-                <div>
-                    <a id="test">
-                        <img class="demo-box" src="http://www.carte-du-monde.net/pays/costa-rica/costa-rica.jpg" height="500"/>
-                    </a>
-                    <a id="marker">
-                        <img src="http://www.clipartbest.com/cliparts/aiq/zKg/aiqzKgB5T.png" id="marker" width="50px" height="50px" style="display: none; position: absolute" />
-                    </a>
-                </div>
-            </div>
+        <div id="mapa" style="position: relative; left: 0; top: 0;">
+            <img style="position: relative; top: 0; left: 0;" id="imgMapa" class="demo-box" src="http://www.carte-du-monde.net/pays/costa-rica/costa-rica.jpg" height="500"/>
+            <img style="position: absolute; top: 30px; left: 70px; display: none" src="http://www.clipartbest.com/cliparts/aiq/zKg/aiqzKgB5T.png" id="marker" width="50px" height="50px" />
         </div>
-
     <script>
 
       
     $(function() {
-        $("#test").click(function(e) {
+        $("#mapa").click(function(e) {
             var offset = $(this).offset();
-            var relativeX = (e.pageX - offset.left);
-            var relativeY = (-1*(e.pageY - offset.top));
-            alert('Posiciones '+' X='+relativeX+' y '+' Y='+relativeY);
-            $(".position").val("afaf");
-            document.getElementById('test').onload = put_marker(relativeX, relativeY);
-            function put_marker(relativeX,relativeY) {
-            with(document.getElementById('marker')) {
-                style.left = relativeX + "px";
-                style.top = relativeY + "px";
-                style.display = "block";
-            }
-        }
-        
-              
+            alert(offset.top)
+            //alert((offset.left - e.pageX) + " --- " + ((offset.top - e.pageY)));
+            //$("#marker").hide();
+            $("#marker").show();
         }); 
-
      });
     
     </script>
-    <h:panelGrid>
-        <h:inputTextarea>
-            
-        </h:inputTextarea>
-    </h:panelGrid>
     </body>
 </html>
