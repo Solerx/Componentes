@@ -11,7 +11,7 @@ and open the template in the editor.
     <body>
         <div id="mapa" style="position: relative; left: 0; top: 0;">
             <img style="position: relative; top: 0; left: 0;" id="imgMapa" class="demo-box" src="http://www.carte-du-monde.net/pays/costa-rica/costa-rica.jpg" height="500"/>
-            <img style="position: absolute; top: 30px; left: 70px; display: none" src="http://www.clipartbest.com/cliparts/aiq/zKg/aiqzKgB5T.png" id="marker" width="50px" height="50px" />
+            <img style="position: absolute; display: none" src="http://www.clipartbest.com/cliparts/aiq/zKg/aiqzKgB5T.png" id="marker" width="50px" height="50px" />
         </div>
     <script>
 
@@ -19,10 +19,10 @@ and open the template in the editor.
     $(function() {
         $("#mapa").click(function(e) {
             var offset = $(this).offset();
-            //alert((offset.left - e.pageX) + " --- " + ((offset.top - e.pageY)));
-            //$("#marker").hide();
             var numX = -1*(offset.left - e.pageX);
             var numY = -1*(offset.top - e.pageY);
+            numX = numX - 25;
+            numY = numY - 50;
             $("#marker").css("left", numX);
             $("#marker").css("top", numY);
             $("#marker").show();
