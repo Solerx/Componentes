@@ -19,9 +19,12 @@ and open the template in the editor.
     $(function() {
         $("#mapa").click(function(e) {
             var offset = $(this).offset();
-            alert(offset.top)
             //alert((offset.left - e.pageX) + " --- " + ((offset.top - e.pageY)));
             //$("#marker").hide();
+            var numX = -1*(offset.left - e.pageX);
+            var numY = -1*(offset.top - e.pageY);
+            $("#marker").css("left", numX);
+            $("#marker").css("top", numY);
             $("#marker").show();
         }); 
      });
