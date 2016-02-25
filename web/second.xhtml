@@ -25,6 +25,7 @@ and open the template in the editor.
             var offset = $(this).offset();
             var numX = -1*(offset.left - e.pageX);
             var numY = -1*(offset.top - e.pageY);
+            //Se le resta 25 y 30 para que la imagen del marker quede con el cursor
             numX = numX - 25;
             numY = numY - 50;
             $("#marker").css("left", numX);
