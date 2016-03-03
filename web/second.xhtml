@@ -8,6 +8,11 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="/resources/demos/external/jquery.bgiframe-2.1.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://www.proyectosbds.com/html/css/layout.css" />
     <body>
         <div id="mapa" style="position: relative; left: 0; top: 0;">
             <img style="position: relative; top: 0; left: 0;" id="imgMapa" class="zoom" src="http://www.carte-du-monde.net/pays/costa-rica/costa-rica.jpg" height="500"/>
@@ -15,7 +20,7 @@ and open the template in the editor.
             <script>
                     wheelzoom(document.querySelector('img.zoom'));
             </script>
-            <img style="position: absolute; display: none" src="http://www.clipartbest.com/cliparts/aiq/zKg/aiqzKgB5T.png" id="marker" width="50px" height="50px" />
+            <img style="position: absolute; display: none " src="http://www.clipartbest.com/cliparts/aiq/zKg/aiqzKgB5T.png" id="marker" width="50px" height="50px" />
         </div>
     <script>
 
@@ -31,10 +36,44 @@ and open the template in the editor.
             $("#marker").css("left", numX);
             $("#marker").css("top", numY);
             $("#marker").show();
+            $( "#dialog" ).dialog({
+          modal: true
+        });
+    
         }); 
         
      });
     
+    
+    
     </script>
+    <body style="background:#ddd">
+ 
+    <div id="dialog" title="Sedes" style="display:none;">
+    <p>Llene la informacion de la sede.</p>
+        <h:form>
+            <h:panelGrid columns="2">
+            <h:outputLabel value="Nombre de la Sede:"/>
+            <h:inputText value="#{beanSedes.nombre}" required="true" requiredMessage="El nombre de la sede no puede estar vacio"/>
+            <h:outputText value= "Facultades de la Sede"/>
+            <h:selectOneMenu   
+                <option>CIENCIAS DE LA SALUD</option>
+                <option>INGENIERÍA Y ARQUITECTURA</option>
+                <option>TECNOLOGÍAS DE LA INFORMACIÓN</option>
+                <option>HOSPITALIDAD</option>
+                <option>CIENCIAS EMPRESARIALES</option>
+                <option>CIENCIAS SOCIALES</option>
+            />
+            <h:outputLabel value="Dirección de la Sede:"/>
+            <h:inputText value="#{beanSedes.dirección}" required="true" requiredMessage="La dirección de la sede no puede estar vacia"/>
+            <h:outputLabel value="Teléfono de la Sede:"/>
+            <h:inputText value="#{beanSedes.teléfono}" required="true" requiredMessage="El teléfono de la sede no puede estar vacio"/>
+
+            <h:commandButton value="Guardar" action="#{beanMensaje.guadar()}"/>
+            </h:panelGrid>
+        </h:form>
+        </div>
+        <button onclick="abrir_dialog()"></button>
+        </body>
     </body>
 </html>
